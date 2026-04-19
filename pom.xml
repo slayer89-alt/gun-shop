@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.example</groupId>
+    <artifactId>Gun-shop</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Gun-shop parent</name>
+    <description>Platform for multi-module Gun-shop</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>25</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <character.encoding>UTF-8</character.encoding>
+        <project.build.sourceEncoding>${character.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${character.encoding}</project.reporting.outputEncoding>
+        <spring-boot.version>4.0.5</spring-boot.version>
+    </properties>
+
+    <modules>
+        <module>cart</module>
+        <module>search</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>setup</id>
+        </profile>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+        </profile>
+        <profile>
+            <id>stage</id>
+        </profile>
+        <profile>
+            <id>prod</id>
+        </profile>
+        <profile>
+            <id>deploy</id>
+        </profile>
+    </profiles>
+</project>
